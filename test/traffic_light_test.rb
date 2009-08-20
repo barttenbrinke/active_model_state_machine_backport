@@ -6,6 +6,8 @@ require 'shoulda'
 class TrafficLight < ActiveRecord::Base
   include ActiveModel::StateMachine
 
+  attr_accessor :tollbooth_willie
+
   state_machine do
     state :red
     state :green
@@ -19,7 +21,7 @@ class TrafficLight < ActiveRecord::Base
   end
 
   def catch_runners
-    puts "That'll be $250."
+    self.tollbooth_willie = "Welcome to Worcester. $1.25, sir."
   end
 end
 
@@ -33,6 +35,7 @@ class TrafficLightTest < ActiveSupport::TestCase
     assert light.change_color!
     assert_equal :yellow, light.current_state
     assert light.change_color!
+    assert_equal "Welcome to Worcester. $1.25, sir.", light.tollbooth_willie
   end
 end
 
