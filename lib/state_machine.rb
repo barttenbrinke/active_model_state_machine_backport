@@ -1,9 +1,11 @@
+require File.join(File.dirname(__FILE__), 'active_support', 'concern')
+
 module ActiveModel
   module StateMachine
-    autoload :Event, 'active_model/state_machine/event'
-    autoload :Machine, 'active_model/state_machine/machine'
-    autoload :State, 'active_model/state_machine/state'
-    autoload :StateTransition, 'active_model/state_machine/state_transition'
+    autoload :Event, File.join(File.dirname(__FILE__), 'state_machine', 'event')
+    autoload :Machine, File.join(File.dirname(__FILE__), 'state_machine', 'machine')
+    autoload :State, File.join(File.dirname(__FILE__), 'state_machine', 'state')
+    autoload :StateTransition, File.join(File.dirname(__FILE__), 'state_machine', 'state_transition')
 
     extend ActiveSupport::Concern
 

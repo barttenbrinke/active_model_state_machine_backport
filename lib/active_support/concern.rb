@@ -1,4 +1,4 @@
-require 'active_support/dependency_module'
+require File.join(File.dirname(__FILE__), 'dependency_module')
 
 module ActiveSupport
   module Concern
