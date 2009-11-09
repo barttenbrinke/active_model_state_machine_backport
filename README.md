@@ -56,3 +56,19 @@ Tested on Rails 2.3.2.
       end
     end
 
+## Persisting the state to the database
+
+    class TrafficLight < ActiveRecord::Base
+      include ActiveModel::StateMachine
+
+        # Write state variable
+        def write_state(sm, new_state)
+          self.state = new_state.to_s
+        end
+
+        # Read state variable
+        def read_state(sm)
+          self.state.blank? ? nil : self.state.to_sym
+        end
+      end
+    end
